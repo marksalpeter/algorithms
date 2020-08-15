@@ -63,3 +63,19 @@ func Random(size int) Ints {
 	}
 	return is
 }
+
+// RandomUnique creates a randomized, unsorted, unique set of ints
+func RandomUnique(size int) Ints {
+	var is []int
+	dupes := make(map[int]bool)
+	for i := 0; i < size; i++ {
+		n := rand.Int() % 100
+		if ok := dupes[n]; ok {
+			i--
+			continue
+		}
+		dupes[n] = true
+		is = append(is, n)
+	}
+	return is
+}
